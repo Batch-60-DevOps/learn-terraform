@@ -1,8 +1,9 @@
-resource "aws_instance" "that" {
-  ami           = "ami-0fcc78c828f981df2"
-  instance_type = "t3.medium"
+resource "aws_instance" "main" {
+  count        = length(var.components)
+  ami           = var.ami_id
+  instance_type = var.instance_type
 
   tags = {
-    Name = "B60-Demo-EC2"
+    Name = var.components[count.index]
   }
 }
