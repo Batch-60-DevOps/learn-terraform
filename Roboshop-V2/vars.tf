@@ -1,12 +1,20 @@
 # List Input
 variable "components" {
-    default = ["frontend", "catalogue", "shipping", "payment"]
-}
-
-variable "ami_id" {
-    default = "ami-0fcc78c828f981df2"
-}
-
-variable "instance_type" {
-    default = "t3.micro"
+    default = {
+        "frontend" = {
+            ami_id        = "ami-0fcc78c828f981df2"
+            instance_type = "t3.micro"
+        },
+        "catalogue" = {
+            ami_id        = "ami-0fcc78c828f981df2"
+            instance_type = "t3.micro"
+        },
+        "shipping" = {
+            ami_id        = "ami-0fcc78c828f981df2"
+            instance_type = "t3.micro"
+        },
+        "payment" = {
+            ami_id        = "ami-0fcc78c828f981df2"
+            instance_type = "t3.micro"      
+    } 
 }

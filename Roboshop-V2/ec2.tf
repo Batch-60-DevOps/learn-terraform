@@ -1,9 +1,9 @@
 resource "aws_instance" "main" {
-  count        = length(var.components)
-  ami           = var.ami_id
-  instance_type = var.instance_type
+  for_each = { for comp in var.components : comp => comp }
+  ami           = each.value["ami_id"]
+  instance_type = lookup(each.value, "instance_type", "t3.micro")
 
   tags = {
-    Name = var.components[count.index]
+    Name = each.key
   }
 }
